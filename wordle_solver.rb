@@ -100,9 +100,6 @@ class WordleSolver
   end
 
   def send_get_request(path, **params)
-    # URI.encode_www_form encodes Symbol differently,
-    # so we need to make sure keys are strings.
-    params = params.transform_keys(&:to_s)
     params = URI.encode_www_form(params)
     Net::HTTP.get_response(URI("#{API_HOST}#{path}?#{params}"))
   end

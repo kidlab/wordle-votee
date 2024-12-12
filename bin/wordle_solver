@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+
+options = {}
+option_parser = OptionParser.new do |opts|
+  opts.banner = "Usage: bin/wordle_solver [options]"
+
+  opts.on('-h', '--help', 'Prints this help') do
+    puts opts
+    exit
+  end
+
+  opts.on(
+    '-t', '--type GUESS_TYPE',
+    Array, %w[daily random],
+    '(Required) Type of guess: daily, random'
+  ) do |value|
+    options[:guess_type] = value
+  end
+
+  opts.on(
+    '--size [SIZE]',
+    Integer,
+    '(Optional) Size of the word. Default is 5.'
+  ) do |value|
+    options[:word_size] = value if value
+  end
+
+  opts.on(
+    '--seed [SEED]',
+    Integer,
+    '(Optional) Seed for random guess'
+  ) do |value|
+    options[:seed] = value if value
+  end
+end
+option_parser.parse!
+
+
+if options[:guess_type].nil?
+  puts option_parser.help
+  exit 1
+end
+
+require_relative '../wordle_solver'
+
+solver = WordleSolver.new
+game_type = "guess_#{options[:guess_type]}"
+solver.public_send(game_type, **options.slice(:word_size, :seed))

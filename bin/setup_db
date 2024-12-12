@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+require 'sqlite3'
+
+database = 'data/en_dict.db'
+FileUtils.rm_f(database)
+db = SQLite3::Database.new(database)
+
+# Create the schema
+db.execute <<~SQL
+  CREATE TABLE entries (
+    word VARCHAR(30) NOT NULL COLLATE NOCASE
+  );
+
+  CREATE INDEX index_word on entries(word);
+SQL
+
+# Download data file
+`curl -o data/words.txt -L https://github.com/ScriptSmith/topwords/raw/refs/heads/master/words.txt`
+
+# Insert data
+system <<~CMD
+  sqlite3 data/en_dict.db ".import data/words.txt entries"
+CMD

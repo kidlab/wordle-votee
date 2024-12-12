@@ -1,7 +1,6 @@
 require 'sqlite3'
 
 class DbService
-  # DATABASE_FILE = 'data/Dictionary.db'.freeze
   DATABASE_FILE = 'data/en_dict.db'.freeze
 
   class << self

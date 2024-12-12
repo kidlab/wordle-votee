@@ -20,6 +20,4 @@ SQL
 `curl -o data/words.txt -L https://github.com/ScriptSmith/topwords/raw/refs/heads/master/words.txt`
 
 # Insert data
-system <<~CMD
-  sqlite3 data/en_dict.db ".import data/words.txt entries"
-CMD
+`sqlite3 data/en_dict.db ".import data/words.txt entries"`

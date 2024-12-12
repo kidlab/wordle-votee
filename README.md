@@ -12,7 +12,7 @@ The program is written with:
 
 ### About the code
 
-- The heart of the game is the data service implemented it `db_service.rb` file where all the follow rules in ChatGPT/LLM prompt are converted to the equivalent SQL condition clauses.
+- The heart of the game is the data service implemented in `db_service.rb` file where all rules in below ChatGPT/LLM prompt are converted to the equivalent SQL condition clauses.
 - The game loop is operated by `wordle_solver.rb` file which is also the entrypoint of the program. It basically glues everything together: calls the data service and Votee API.
 
 ### Why not ChatGPT/LLM?

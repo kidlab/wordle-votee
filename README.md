@@ -98,14 +98,14 @@ bin/setup_db
 ### To run the solver directly from console
 
 ```
-bin/worlder_solver --type daily
-bin/worlder_solver -t daily
-bin/worlder_solver --type random
-bin/worlder_solver -t random
+bin/wordle_solver --type daily
+bin/wordle_solver -t daily
+bin/wordle_solver --type random
+bin/wordle_solver -t random
 
-bin/worlder_solver --type daily --size 8
-bin/worlder_solver --type random --size 8
-bin/worlder_solver --type random --size 8 --seed 10
+bin/wordle_solver --type daily --size 8
+bin/wordle_solver --type random --size 8
+bin/wordle_solver --type random --size 8 --seed 10
 ```
 
 ### To run console
